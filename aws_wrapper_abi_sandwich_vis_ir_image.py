@@ -40,7 +40,7 @@ def main():
     minutes = [0]
 
     domain_names = []
-    domain_names.append('La_Pampa')
+    '''domain_names.append('La_Pampa')
     domain_names.append('Neuquen')
     domain_names.append('Prov_BsAs')
     domain_names.append('Entre_Rios')
@@ -49,7 +49,7 @@ def main():
     domain_names.append('San_Luis_Sur_Cordoba')
     domain_names.append('Formosa_Sur')
     domain_names.append('Mendoza_San_Rafael')
-    domain_names.append('Radar_Termas_de_Río_Ondo')
+    domain_names.append('Radar_Termas_de_Río_Ondo')'''
 
     max_percentile = 99.9
     #gamma = 1.0
