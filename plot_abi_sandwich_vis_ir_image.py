@@ -281,8 +281,8 @@ def plot_image(date, domain, max_percentile, gamma):
     #resources.mpDataResolution              = 'Finest'
     #resources.mpGeophysicalLineThicknessF   = 3.0
     #resources.mpGeophysicalLineColor    = 'black'
-    #resources.mpOutlineOn               = False
-    resources.mpOutlineOn               = True
+    resources.mpOutlineOn               = False
+    #resources.mpOutlineOn               = True
 
     resources.mpDataBaseVersion         = 'MediumRes'
     resources.mpDataSetName             = 'Earth..4'
