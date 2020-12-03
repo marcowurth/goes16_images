@@ -9,8 +9,8 @@ from plot_abi_sandwich_vis_ir_image import plot_image
 
 
 def main():
-    distributed_exec = True
-    #distributed_exec = False
+    #distributed_exec = True
+    distributed_exec = False
 
     if distributed_exec:
         num_max_tasks = 2
