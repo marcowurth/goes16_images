@@ -9,8 +9,8 @@ from plot_abi_sandwich_vis_ir_image import plot_image
 
 
 def main():
-    distributed_exec = True
-    #distributed_exec = False
+    #distributed_exec = True
+    distributed_exec = False
 
     if distributed_exec:
         num_max_tasks = 2
@@ -31,16 +31,16 @@ def main():
 
     year = 2020
     month = 12
-    days = [2]
+    days = [3]
     #days = list(range(1,31))
-    hours = [18]
+    hours = [19]
     #hours = list(range(18,21))
     #hours = list(range(24))
     #minutes = list(range(0, 60, 10))
-    minutes = [0]
+    minutes = [30]
 
     domain_names = []
-    '''domain_names.append('La_Pampa')
+    domain_names.append('La_Pampa')
     domain_names.append('Neuquen')
     domain_names.append('Prov_BsAs')
     domain_names.append('Entre_Rios')
@@ -49,7 +49,7 @@ def main():
     domain_names.append('San_Luis_Sur_Cordoba')
     domain_names.append('Formosa_Sur')
     domain_names.append('Mendoza_San_Rafael')
-    domain_names.append('Radar_Termas_de_Río_Ondo')'''
+    domain_names.append('Radar_Termas_de_Río_Ondo')
 
     max_percentile = 99.9
     #gamma = 1.0
