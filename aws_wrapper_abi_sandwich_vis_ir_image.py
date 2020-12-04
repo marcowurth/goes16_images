@@ -1,4 +1,7 @@
 
+import sys
+print(sys.path)
+
 import datetime
 
 import dask
