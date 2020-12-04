@@ -40,6 +40,10 @@ def get_image_domain(domain_name):
                 lon_min = 79, lon_max = 95,
                       lat_min = 10, name = domain_name)
 
+    elif domain_name == 'Uruguay':
+        domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
+                        centerlat = -32.7, centerlon = -55.8, radius = 280)
+
     elif domain_name == 'Argentina_Central':
         domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
                         centerlat = -34.6, centerlon = -64.4, radius = 800)
@@ -72,25 +76,33 @@ def get_image_domain(domain_name):
         domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
                         centerlat = -29.5, centerlon = -61.5, radius = 130)
 
+    elif domain_name == 'Santa_Fe_Sur':
+        domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
+                        centerlat = -33.1, centerlon = -61.9, radius = 200)
+
     elif domain_name == 'La_Pampa':
         domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
-                        centerlat = -37.2, centerlon = -65.7, radius = 300)
+                        centerlat = -37.2, centerlon = -65.5, radius = 250)
 
     elif domain_name == 'La_Pampa_Este':
         domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
                         centerlat = -37.2, centerlon = -64.2, radius = 100)
 
-    elif domain_name == 'Neuquen':
+    elif domain_name == 'Neuquen_Bio_Bio':
         domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
-                        centerlat = -38.5, centerlon = -70.0, radius = 300)
+                        centerlat = -38.6, centerlon = -70.8, radius = 280)
 
     elif domain_name == 'Neuquen_Norte':
         domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
                         centerlat = -37.7, centerlon = -69.5, radius = 130)
 
+    elif domain_name == 'Rio_Negro_Este_Golfo_San_Matias':
+        domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
+                        centerlat = -40.9, centerlon = -65.0, radius = 280)
+
     elif domain_name == 'Prov_BsAs':
         domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
-                        centerlat = -36.5, centerlon = -60.2, radius = 350)
+                        centerlat = -36.8, centerlon = -60.0, radius = 310)
 
     elif domain_name == 'Prov_BsAs_Oeste':
         domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
@@ -114,7 +126,7 @@ def get_image_domain(domain_name):
 
     elif domain_name == 'Entre_Rios':
         domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
-                        centerlat = -32.2, centerlon = -59.7, radius = 200)
+                        centerlat = -32.4, centerlon = -59.3, radius = 200)
 
     elif domain_name == 'Radar_Termas_de_Río_Ondo':
         domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
@@ -149,6 +161,18 @@ def get_image_domain(domain_name):
         domain = dict(lat_max = -30.4,\
                 lon_min = -65.4, lon_max = -63.5,\
                       lat_min = -32.0, name = domain_name)
+
+    elif domain_name == 'Cordoba_Norte':
+        domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
+                        centerlat = -31.0, centerlon = -63.8, radius = 200)
+
+    elif domain_name == 'Cordoba_San_Luis':
+        domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
+                        centerlat = -32.0, centerlon = -65.0, radius = 300)
+
+    elif domain_name == 'Mendoza_San_Luis':
+        domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',
+                        centerlat = -34.2, centerlon = -67.2, radius = 300)
 
     elif domain_name == 'Mendoza_Norte':
         domain =   dict(name = domain_name, plot_width = 800, projection = 'Hammer', limits_type = 'radius',

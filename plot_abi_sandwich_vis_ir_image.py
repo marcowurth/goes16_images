@@ -8,7 +8,6 @@ import xarray as xr
 import pyproj
 import Ngl
 import Nio
-#import shapefile
 from PIL import Image
 
 from domain_definitions import get_image_domain
@@ -135,7 +134,8 @@ def plot_image(date, domain, max_percentile, gamma):
     goes_dataset_b02.close()
 
 
-    margin_deg = 1.0
+    #margin_deg = 1.0
+    margin_deg = 0.5
     index_x_first, index_x_last, index_y_first, index_y_last = cut_data(image_array_b13, lats_b13, lons_b13, domain,
                                                                         margin_deg, False)
     image_array_b13 = image_array_b13[index_y_first:index_y_last+1, index_x_first:index_x_last+1]
@@ -172,7 +172,7 @@ def plot_image(date, domain, max_percentile, gamma):
     clevels_b13 = list(range(-90,-20+1,1))
 
 
-    range_min = 0.04
+    range_min = 0.0
     range_max = np.percentile(np.concatenate(image_array_b02), max_percentile)
     image_array_b02 = (image_array_b02 - range_min) / (range_max - range_min)
     image_array_b02 = np.where(image_array_b02 < 0.0, 0.0, image_array_b02)
@@ -308,14 +308,14 @@ def plot_image(date, domain, max_percentile, gamma):
     #shp_filenames.append(['gadm36_PRT_0.shp', 3.0])
     #shp_filenames.append(['gadm36_FRA_0.shp', 3.0])
 
-    shp_filenames.append(['gadm36_ARG_0.shp', 1.5])
-    shp_filenames.append(['gadm36_BRA_0.shp', 1.5])
-    shp_filenames.append(['gadm36_CHL_0.shp', 1.5])
-    shp_filenames.append(['gadm36_URY_0.shp', 1.5])
+    shp_filenames.append(['gadm36_ARG_0.shp', 0.5])
+    shp_filenames.append(['gadm36_BRA_0.shp', 0.5])
+    shp_filenames.append(['gadm36_CHL_0.shp', 0.5])
+    shp_filenames.append(['gadm36_URY_0.shp', 0.5])
     shp_filenames.append(['gadm36_ARG_1.shp', 0.5])
     shp_filenames.append(['gadm36_BRA_1.shp', 0.5])
     shp_filenames.append(['gadm36_CHL_1.shp', 0.5])
-    shp_filenames.append(['gadm36_URY_1.shp', 0.5])
+    shp_filenames.append(['gadm36_URY_1.shp', 0.2])
     shp_filenames.append(['gadm36_ARG_2.shp', 0.2])
 
     '''shp_filenames.append(['gadm36_ARG_0.shp', 0.5])
@@ -362,8 +362,10 @@ def plot_image(date, domain, max_percentile, gamma):
     resources.cnFillOpacityF        = opacity_b13
     resources.cnMissingValFillColor = 'transparent'
     resources.cnLevelSelectionMode  = 'ExplicitLevels'
-    resources.cnLevels = clevels_b13
-    resources.cnFillColors = custom_palette_b13
+    resources.cnLevels              = clevels_b13
+    resources.cnFillColors          = custom_palette_b13
+    resources.cnConstFLabelOn       = False
+    resources.cnNoDataLabelOn       = False
 
     resources.cnLinesOn             = False
     resources.cnLineLabelsOn        = False
@@ -412,8 +414,10 @@ def plot_image(date, domain, max_percentile, gamma):
     resources.cnFillOpacityF        = opacity_b02
     resources.cnMissingValFillColor = 'black'
     resources.cnLevelSelectionMode  = 'ExplicitLevels'
-    resources.cnLevels = clevels_b02
-    resources.cnFillColors = custom_palette_b02
+    resources.cnLevels              = clevels_b02
+    resources.cnFillColors          = custom_palette_b02
+    resources.cnConstFLabelOn       = False
+    resources.cnNoDataLabelOn       = False
 
     resources.cnLinesOn             = False
     resources.cnLineLabelsOn        = False
@@ -431,10 +435,13 @@ def plot_image(date, domain, max_percentile, gamma):
     text_res_1.txFontHeightF = 0.013
     text_x = 0.97
     if domain['name'] == 'La_Pampa'\
-     or domain['name'] == 'Prov_BsAs_Saladillo':
+     or domain['name'] == 'Mendoza_San_Luis'\
+     or domain['name'] == 'Uruguay'\
+     or domain['name'] == 'Prov_BsAs':
         text_y = 0.920
-    elif domain['name'] == 'Neuquen':
-        text_y = 0.920
+    elif domain['name'] == 'Neuquen_Bio_Bio'\
+     or domain['name'] == 'Rio_Negro_Este_Golfo_San_Matias':
+        text_y = 0.915
     elif domain['name'] == 'Argentina_Central':
         text_y = 0.905
     else:

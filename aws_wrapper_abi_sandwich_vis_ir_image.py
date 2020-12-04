@@ -25,36 +25,43 @@ def main():
         client = None
 
     channels = [2,13]
-    #channels = [15]
-    #channels = [13,15]
-    #channels = [1,7,13]
 
-    year = 2020
-    month = 12
-    days = [3]
-    #days = list(range(1,31))
-    hours = [19]
-    #hours = list(range(18,21))
-    #hours = list(range(24))
-    #minutes = list(range(0, 60, 10))
-    minutes = [30]
+    timediff_minutes = 20
+    #timediff_minutes = 30
+    datetime_now = datetime.datetime.utcnow()
+    datetime_latest = datetime_now - datetime.timedelta(
+                        seconds = (datetime_now.minute % 10 + timediff_minutes) * 60 + datetime_now.second)
+    print('now: ', datetime_now)
+    print('load:', datetime_latest)
+
+    year = datetime_latest.year
+    month = datetime_latest.month
+    days = [datetime_latest.day]
+    hours = [datetime_latest.hour]
+    minutes = [datetime_latest.minute]
+
+    #year = 2020
+    #month = 12
+    #days = [3]
+    #hours = [14]
+    #minutes = [10]
 
     domain_names = []
-    domain_names.append('La_Pampa')
-    domain_names.append('Neuquen')
     domain_names.append('Prov_BsAs')
-    domain_names.append('Entre_Rios')
-    domain_names.append('Santa_Fe')
     domain_names.append('AMBA')
-    domain_names.append('San_Luis_Sur_Cordoba')
-    domain_names.append('Formosa_Sur')
-    domain_names.append('Mendoza_San_Rafael')
-    domain_names.append('Radar_Termas_de_Río_Ondo')
+    domain_names.append('Entre_Rios')
+    domain_names.append('Santa_Fe_Sur')
+    domain_names.append('Cordoba_Norte')
+    domain_names.append('Mendoza_San_Luis')
+    domain_names.append('La_Pampa')
+    domain_names.append('Neuquen_Bio_Bio')
+    domain_names.append('Rio_Negro_Este_Golfo_San_Matias')
+    domain_names.append('Uruguay')
 
     max_percentile = 99.9
-    #gamma = 1.0
+    gamma = 1.0
     #gamma = 0.8
-    gamma = 0.5
+    #gamma = 0.5
 
     download_abi_files(distributed_exec, num_max_tasks, client, channels, year, month, days, hours, minutes)
 
