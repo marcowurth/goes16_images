@@ -92,3 +92,8 @@ if __name__ == '__main__':
         print('total script time:  {:.0f}min{:.0f}s'.format(delta_t//60, delta_t-delta_t//60*60))
     else:
         print('total script time:  {:.0f}h{:.0f}min'.format(delta_t//3600, (delta_t-delta_t//3600*3600)/60))
+
+
+    with open('/data_slow/logs/script_times.log', 'a') as f:
+        f.write('\n{}  {:.0f}min{:.1f}s'.format(str(datetime.datetime.utcnow())[:16],
+                                                delta_t//60, delta_t-delta_t//60*60))

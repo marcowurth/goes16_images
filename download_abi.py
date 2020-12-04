@@ -351,7 +351,8 @@ def delete_all_abi_files():
 
     for delete_path in delete_paths:
         for filename in os.listdir(delete_path):
-            os.remove(delete_path + filename)
+            if filename != 'b02' and filename != 'b13':
+                os.remove(delete_path + filename)
 
     return
 
