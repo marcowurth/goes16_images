@@ -463,15 +463,7 @@ def plot_image(date, domain, max_percentile, gamma):
                       comp_descr, date.day, date.month, date.year,
                       date.hour, date.minute)
     text_descr_x = 0.02
-    if domain['name'] == 'La_Pampa'\
-     or domain['name'] == 'Prov_BsAs_Saladillo':
-        text_descr_y = 0.905
-    elif domain['name'] == 'Neuquen':
-        text_descr_y = 0.90
-    elif domain['name'] == 'Argentina_Central':
-        text_descr_y = 0.890
-    else:
-        text_descr_y = 0.91
+    text_descr_y = text_y - 0.015
 
     ########################################################################
 
