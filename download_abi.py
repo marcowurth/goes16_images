@@ -122,7 +122,7 @@ def download_abi_files(distributed_exec, num_max_tasks, client, channels, year, 
 
 def download_file(date, channel):
 
-    with open('../../base_path.txt', 'r') as f:
+    with open('/data_slow/base_path.txt', 'r') as f:
         base_path = f.readlines()[0][:-1]
     path = dict(base = base_path,
                 data = 'data/ABI/GOES-16/',)

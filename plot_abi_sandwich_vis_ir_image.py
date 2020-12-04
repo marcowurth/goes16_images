@@ -49,7 +49,7 @@ def main():
 
 def plot_image(date, domain, max_percentile, gamma):
 
-    with open('../../base_path.txt', 'r') as f:
+    with open('/data_slow/base_path.txt', 'r') as f:
         base_path = f.readlines()[0][:-1]
     path = dict(base = base_path,
                 data = 'data/ABI/GOES-16/',
