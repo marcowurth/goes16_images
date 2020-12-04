@@ -95,5 +95,5 @@ if __name__ == '__main__':
 
 
     with open('/data_slow/logs/script_times.log', 'a') as f:
-        f.write('\n{}  {:.0f}min{:.1f}s'.format(str(datetime.datetime.utcnow())[:16],
+        f.write('{}  {:.0f}min{:.1f}s\n'.format(str(datetime.datetime.utcnow())[:16],
                                                 delta_t//60, delta_t-delta_t//60*60))
