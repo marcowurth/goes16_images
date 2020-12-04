@@ -1,12 +1,9 @@
 
-import sys
-print(sys.path)
-
 import datetime
 
 import dask
 
-from download_abi import download_abi_files
+from download_abi import download_abi_files, delete_all_abi_files
 from domain_definitions import get_image_domain
 from plot_abi_sandwich_vis_ir_image import plot_image
 
@@ -74,6 +71,8 @@ def main():
             for hour in hours:
                 for minute in minutes:
                     plot_image(datetime.datetime(year, month, day, hour, minute), domain, max_percentile, gamma)
+
+    delete_all_abi_files()
 
     return
 

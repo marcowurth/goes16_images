@@ -342,6 +342,23 @@ def create_fillValue_image(path, filename_full):
 ############################################################################
 ############################################################################
 
+def delete_all_abi_files():
+
+    delete_paths = []
+    delete_paths.append('/data_slow/data/ABI/GOES-16/')
+    delete_paths.append('/data_slow/data/ABI/GOES-16/b02/')
+    delete_paths.append('/data_slow/data/ABI/GOES-16/b13/')
+
+    for delete_path in delete_paths:
+        for filename in os.listdir(delete_path):
+            os.remove(delete_path + filename)
+
+    return
+
+############################################################################
+############################################################################
+############################################################################
+
 if __name__ == '__main__':
     import time
     t1 = time.time()
