@@ -40,9 +40,9 @@ def main():
     hours = [datetime_latest.hour]
     minutes = [datetime_latest.minute]
 
-    #year = 2020
-    #month = 12
-    #days = [3]
+    year = 2019
+    month = 12
+    days = [28]
     #hours = [14]
     #minutes = [10]
 
@@ -59,9 +59,9 @@ def main():
     domain_names.append('Uruguay')
 
     max_percentile = 99.9
-    gamma = 1.0
+    #gamma = 1.0
     #gamma = 0.8
-    #gamma = 0.5
+    gamma = 0.5
 
     download_abi_files(distributed_exec, num_max_tasks, client, channels, year, month, days, hours, minutes)
 
