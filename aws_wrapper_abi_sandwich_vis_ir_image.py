@@ -8,7 +8,8 @@ from domain_definitions import get_image_domain
 from plot_abi_sandwich_vis_ir_image import plot_image
 
 
-def main():
+def main(base_path):
+
     #distributed_exec = True
     distributed_exec = False
 
@@ -63,16 +64,16 @@ def main():
     #gamma = 0.8
     gamma = 0.5
 
-    download_abi_files(distributed_exec, num_max_tasks, client, channels, year, month, days, hours, minutes)
+    download_abi_files(base_path, distributed_exec, num_max_tasks, client, channels, year, month, days, hours, minutes)
 
     for domain_name in domain_names:
         domain = get_image_domain(domain_name)
         for day in days:
             for hour in hours:
                 for minute in minutes:
-                    plot_image(datetime.datetime(year, month, day, hour, minute), domain, max_percentile, gamma)
+                    plot_image(base_path, datetime.datetime(year, month, day, hour, minute), domain, max_percentile, gamma)
 
-    delete_all_abi_files()
+    delete_all_abi_files(base_path)
 
     return
 
@@ -81,9 +82,12 @@ def main():
 ############################################################################
 
 if __name__ == '__main__':
+
+    base_path = '/data_fast/'
+
     import time
     t1 = time.time()
-    main()
+    main(base_path)
     t2 = time.time()
     delta_t = t2-t1
     if delta_t < 60:
@@ -94,6 +98,6 @@ if __name__ == '__main__':
         print('total script time:  {:.0f}h{:.0f}min'.format(delta_t//3600, (delta_t-delta_t//3600*3600)/60))
 
 
-    with open('/data_slow/logs/script_times.log', 'a') as f:
+    with open(base_path + 'logs/script_times.log', 'a') as f:
         f.write('{}  {:.0f}min{:.1f}s\n'.format(str(datetime.datetime.utcnow())[:16],
                                                 delta_t//60, delta_t-delta_t//60*60))

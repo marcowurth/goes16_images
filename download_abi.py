@@ -11,6 +11,9 @@ import dask
 
 
 def main():
+
+    base_path = '/data_fast/'
+
     #distributed_exec = True
     distributed_exec = False
 
@@ -42,7 +45,7 @@ def main():
     #minutes = list(range(0, 60, 10))
     minutes = [0]
 
-    download_abi_files(distributed_exec, num_max_tasks, client, channels, year, month, days, hours, minutes)
+    download_abi_files(base_path, distributed_exec, num_max_tasks, client, channels, year, month, days, hours, minutes)
 
     return
 
@@ -50,7 +53,7 @@ def main():
 ############################################################################
 ############################################################################
 
-def download_abi_files(distributed_exec, num_max_tasks, client, channels, year, month, days, hours, minutes):
+def download_abi_files(base_path, distributed_exec, num_max_tasks, client, channels, year, month, days, hours, minutes):
 
     if distributed_exec:
         for day in days:
@@ -74,7 +77,8 @@ def download_abi_files(distributed_exec, num_max_tasks, client, channels, year, 
             for sub_date_channel in sub_date_channels:
                 futures = []
                 for date_channel in sub_date_channel:
-                    futures.append(client.submit(download_file, date_channel[0], date_channel[1], retries = 3))
+                    futures.append(client.submit(download_file, base_path, date_channel[0], date_channel[1],
+                                                 retries = 3))
                 dask.distributed.wait(futures)
                 all_tasks += futures
 
@@ -111,7 +115,7 @@ def download_abi_files(distributed_exec, num_max_tasks, client, channels, year, 
             for hour in hours:
                 for minute in minutes:
                     for channel in channels:
-                        download_file(datetime.datetime(year, month, day, hour, minute), channel)
+                        download_file(base_path, datetime.datetime(year, month, day, hour, minute), channel)
 
 
     return
@@ -120,10 +124,8 @@ def download_abi_files(distributed_exec, num_max_tasks, client, channels, year, 
 ############################################################################
 ############################################################################
 
-def download_file(date, channel):
+def download_file(base_path, date, channel):
 
-    with open('/data_slow/base_path.txt', 'r') as f:
-        base_path = f.readlines()[0][:-1]
     path = dict(base = base_path,
                 data = 'data/ABI/GOES-16/',)
 
@@ -342,12 +344,12 @@ def create_fillValue_image(path, filename_full):
 ############################################################################
 ############################################################################
 
-def delete_all_abi_files():
+def delete_all_abi_files(base_path):
 
     delete_paths = []
-    delete_paths.append('/data_slow/data/ABI/GOES-16/')
-    delete_paths.append('/data_slow/data/ABI/GOES-16/b02/')
-    delete_paths.append('/data_slow/data/ABI/GOES-16/b13/')
+    delete_paths.append(base_path + 'data/ABI/GOES-16/')
+    delete_paths.append(base_path + 'data/ABI/GOES-16/b02/')
+    delete_paths.append(base_path + 'data/ABI/GOES-16/b13/')
 
     for delete_path in delete_paths:
         for filename in os.listdir(delete_path):

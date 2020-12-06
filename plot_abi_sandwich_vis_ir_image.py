@@ -16,6 +16,8 @@ from cut_abi_image import cut_data
 
 def main():
 
+    base_path = '/data_fast/'
+
     max_percentile = 99.9
     #gamma = 1.0
     #gamma = 0.8
@@ -39,7 +41,7 @@ def main():
     for day in days:
         for hour in hours:
             for minute in minutes:
-                plot_image(datetime.datetime(year, month, day, hour, minute), domain, max_percentile, gamma)
+                plot_image(base_path, datetime.datetime(year, month, day, hour, minute), domain, max_percentile, gamma)
 
     return
 
@@ -47,10 +49,8 @@ def main():
 ############################################################################
 ############################################################################
 
-def plot_image(date, domain, max_percentile, gamma):
+def plot_image(base_path, date, domain, max_percentile, gamma):
 
-    with open('/data_slow/base_path.txt', 'r') as f:
-        base_path = f.readlines()[0][:-1]
     path = dict(base = base_path,
                 data = 'data/ABI/GOES-16/',
                 image = 'images/GOES-16/sandwich_vis_ir/',
